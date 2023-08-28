@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import HomeTab from './HomeTab';
 import Navigation from './Navigation';
-import Board from './Board';
+import Board from './Board'; // Import your Board component
 import './App.css';
 
 class App extends Component {
@@ -12,26 +12,30 @@ class App extends Component {
       selectedTab: 'home',
     };
   }
+
   renderShippingRequests() {
-    return (<Board />);
+    return <Board />;
   }
 
   renderNavigation() {
-    return (<Navigation
-      onClick={(tabName) => this.changeTab(tabName)}
-      selectedTab={this.state.selectedTab}
-      />);
+    return (
+      <Navigation
+        onClick={(tabName) => this.changeTab(tabName)}
+        selectedTab={this.state.selectedTab}
+      />
+    );
   }
 
   renderTabContent() {
-    switch(this.state.selectedTab) {
+    switch (this.state.selectedTab) {
       case 'home':
       default:
-        return HomeTab();
+        return HomeTab(); // Make sure HomeTab is a component, not a function call
       case 'shipping-requests':
         return this.renderShippingRequests();
     }
   }
+
   render() {
     return (
       <div className="App">
